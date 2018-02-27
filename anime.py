@@ -32,7 +32,7 @@ if __name__ == "__main__":
 	sol : List = anime1.copy()
 	plan : List = []
 	print("必然選上之作品有:", *('\"' + anime[0] + '\"' for anime in anime1))
-	sd = "..."
+	sd = input("請輸入種子碼: ")
 	random.seed(sd) #以字串為種子碼
 	print("設置種子為: {}".format(sd))
 	order = random.sample(range(len(anime2)), len(anime2))
@@ -63,4 +63,4 @@ if __name__ == "__main__":
 		print("{} 有這些動畫:".format(day), *('\"' + a + '\"' for a in anime))
 		random.shuffle(anime)
 		print("\t隨機排序後的播放順序:".format(day), *('\"' + a + '\"' for a in anime))
-	print("\n選擇完畢，之後將手動填充那些票數更低但播放時間短的作品進去...")
+	print("\n選擇完畢，之後將由本人手動填充那些票數更低但播放時間短的作品進去...")
