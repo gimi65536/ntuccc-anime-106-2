@@ -1,6 +1,6 @@
 from typing import List
 from itertools import product, combinations
-import random
+import random, sys
 total_time : int = 60
 anime1 : List = [
 	["擅長捉弄人的高木同學"     , 24, ("Tue", "Thu", "Fri")],
@@ -29,6 +29,7 @@ def pick(animelist):
 		yield [(anime[0], anime[2][day]) for anime, day in zip(animelist, i)]
 
 if __name__ == "__main__":
+	print("使用 Python {0.major}.{0.minor}.{0.micro}\n".format(sys.version_info))
 	sol : List = anime1.copy()
 	plan : List = []
 	print("必然選上之作品有:", *('\"' + anime[0] + '\"' for anime in anime1))
