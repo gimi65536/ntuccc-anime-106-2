@@ -2,14 +2,14 @@ from typing import List
 from itertools import product, combinations
 import random, sys
 total_time : int = 60
-anime1 : List = [
+anime1 : List[List] = [
 	["擅長捉弄人的高木同學"     , 24, ("Tue", "Thu", "Fri")],
 	["寶石之國"               , 24, ("Tue", "Thu", "Fri")],
 	["戰姬絕唱"               , 48, ("Tue", "Wed", "Thu", "Fri")],
 	["調教咖啡廳"             , 24, ("Mon", "Tue", "Wed", "Thu", "Fri")],
 	["幻想萬華鏡"             , 30, ("Wed", "Thu")]
 ]
-anime2 : List = [
+anime2 : List[List] = [
 	["帶著智慧型手機闖蕩異世界"  , 24, ("Mon", )],
 	["不正經的魔術講師與禁忌教典", 24, ("Mon", )],
 	["悠悠哉哉少女日和"        , 48, ("Fri", )],
@@ -30,13 +30,13 @@ def pick(animelist):
 
 if __name__ == "__main__":
 	print("使用 Python {0.major}.{0.minor}.{0.micro}\n".format(sys.version_info))
-	sol : List = anime1.copy()
-	plan : List = []
+	sol : List[List] = anime1.copy()
+	plan : List[List] = []
 	print("必然選上之作品有:", *('\"' + anime[0] + '\"' for anime in anime1))
-	sd = input("請輸入種子碼: ")
+	sd : str = input("請輸入種子碼: ")
 	random.seed(sd) #以字串為種子碼
 	print("設置種子為: {}".format(sd))
-	order = random.sample(range(len(anime2)), len(anime2))
+	order : List[int] = random.sample(range(len(anime2)), len(anime2))
 	print("現在選中的作品隨機排序為:", *('\"' + anime2[i][0] + '\"' for i in order))
 	for i in order:
 		anime = anime2[i] #選中一個作品
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 	#而一次播放40分鐘以上的一個番被選中的機率為1/21 * 1 + 2/3 * 1/2 + 2/7 * 0 = 8/21 = 38%
 	print("\n於是，現在選中的作品有: ", *('\"' + anime[0] + '\"' for anime in sol))
 	print("有{}種播放日期的排法".format(len(plan)))
-	choose = random.randint(0, len(plan))
+	choose : int = random.randint(0, len(plan))
 	print("\n選中的排法為:")
 	for name, day in plan[choose]:
 		print('\t\"{}\" {}'.format(name, day))
